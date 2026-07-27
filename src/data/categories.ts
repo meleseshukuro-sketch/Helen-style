@@ -5,7 +5,9 @@ const img = (id: string, w = 1200, h = 1600) =>
 
 export const placeholderImages = {
   hero: img("1483985988355-763728e1935b", 1920, 1080),
-  women: img("1469334031218-e382a71b716b", 900, 1200),
+  // Helen Lifestyle product photo from Photo-collection repo
+  women:
+    "https://raw.githubusercontent.com/meleseshukuro-sketch/Photo-collection-/main/WOMEN%20DRESS.jpeg",
   men: img("1490114538077-0a7f8cb49891", 900, 1200),
   kids: img("1503454537195-1dcabb73ffb9", 900, 1200),
   shoes: img("1543163521-1bf539c55dd2", 900, 1200),

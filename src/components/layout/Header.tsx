@@ -23,9 +23,9 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-hl-border-soft">
         <div className="mx-auto max-w-[1600px] px-4 md:px-6 lg:px-8">
+          {/* Top bar: menu | logo | icons */}
           <div className="grid grid-cols-3 items-center h-14 md:h-16">
-            {/* Left */}
-            <div className="flex items-center gap-2 justify-self-start">
+            <div className="justify-self-start">
               <button
                 type="button"
                 className="lg:hidden p-2 -ml-2 hover:opacity-60"
@@ -34,31 +34,12 @@ export function Header() {
               >
                 <Menu className="h-5 w-5" />
               </button>
-              <nav
-                className="hidden lg:flex items-center gap-5 xl:gap-6"
-                aria-label="Main"
-              >
-                {navLinks.slice(1).map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className={cn(
-                      "text-[11px] xl:text-xs tracking-[0.12em] uppercase text-hl-black/80 hover:text-hl-black transition-colors whitespace-nowrap",
-                      link.label === "Sale" && "text-hl-accent hover:text-hl-accent"
-                    )}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </nav>
             </div>
 
-            {/* Centre */}
             <div className="justify-self-center">
               <Logo />
             </div>
 
-            {/* Right */}
             <div className="flex items-center gap-1 sm:gap-2 justify-self-end">
               <button
                 type="button"
@@ -101,6 +82,25 @@ export function Header() {
               </Link>
             </div>
           </div>
+
+          {/* Desktop nav on its own row — prevents logo overlap */}
+          <nav
+            className="hidden lg:flex items-center justify-center flex-wrap gap-x-5 gap-y-2 xl:gap-x-7 pb-3 border-t border-hl-border-soft pt-2.5"
+            aria-label="Main"
+          >
+            {navLinks.slice(1).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "text-[11px] xl:text-xs tracking-[0.14em] uppercase text-hl-black/80 hover:text-hl-black transition-colors whitespace-nowrap",
+                  link.label === "Sale" && "text-hl-accent hover:text-hl-accent"
+                )}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </header>
 

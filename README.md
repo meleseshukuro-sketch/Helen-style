@@ -16,7 +16,7 @@ Website: [https://helenlifestyle.co.za](https://helenlifestyle.co.za)
 
 ### Requirements
 
-- Node.js 18+
+- Node.js 20+
 - npm
 
 ### Install
@@ -45,6 +45,38 @@ npm start
 ```bash
 npm run lint
 ```
+
+## Deploy on Render
+
+The project includes `render.yaml` and is ready for [Render](https://render.com).
+
+### Option A — Blueprint (recommended)
+
+1. Push this repo to GitHub (already at `Helen-style` if connected).
+2. In Render: **New** → **Blueprint**
+3. Select the `Helen-style` repository
+4. Apply the `render.yaml` service
+5. After deploy, set environment variable:
+   - `NEXT_PUBLIC_SITE_URL` = your Render URL (e.g. `https://helen-lifestyle.onrender.com`) or `https://helenlifestyle.co.za`
+
+### Option B — Web Service manually
+
+1. **New** → **Web Service** → connect the GitHub repo
+2. Settings:
+   - **Runtime:** Node
+   - **Build Command:** `npm ci && npm run build`
+   - **Start Command:** `npm run start`
+   - **Node version:** 20 (or set `NODE_VERSION=20.18.0`)
+3. Environment variables:
+   - `NODE_ENV` = `production`
+   - `NEXT_PUBLIC_SITE_URL` = your live site URL
+
+Render sets `PORT` automatically. The start script binds to `0.0.0.0` so the service is reachable.
+
+### After deploy
+
+- Free tier services sleep after inactivity; the first request may be slow.
+- Point `helenlifestyle.co.za` to Render via a custom domain in the Render dashboard when ready.
 
 ## Project structure
 

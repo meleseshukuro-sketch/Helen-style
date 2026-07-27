@@ -35,6 +35,8 @@ type ProductInput = {
   isBestSeller?: boolean;
   stockStatus?: Product["stockStatus"];
   imageSeed: number;
+  /** Optional custom image URLs (e.g. from Photo-collection repo) */
+  customImages?: string[];
 };
 
 function createProduct(input: ProductInput, index: number): Product {
@@ -42,6 +44,10 @@ function createProduct(input: ProductInput, index: number): Product {
   const slug = `${slugify(input.name)}-${id}`;
   const img = placeholderImages.product(input.imageSeed);
   const img2 = placeholderImages.product(input.imageSeed + 3);
+  const images =
+    input.customImages && input.customImages.length > 0
+      ? input.customImages
+      : [img, img2];
 
   return {
     id,
@@ -53,7 +59,7 @@ function createProduct(input: ProductInput, index: number): Product {
     description: input.description,
     price: input.price,
     salePrice: input.salePrice,
-    images: [img, img2],
+    images,
     sizes: input.sizes,
     colours: input.colourKeys.map((k) => colours[k]),
     stockStatus: input.stockStatus ?? "in_stock",
@@ -66,18 +72,19 @@ function createProduct(input: ProductInput, index: number): Product {
 const catalog: ProductInput[] = [
   // WOMEN (6+)
   {
-    name: "Linen Blend Midi Dress",
+    name: "Tiered Maxi Dress",
     department: "women",
     category: "Dresses and Jumpsuits",
     categorySlug: "dresses-and-jumpsuits",
     description:
-      "A relaxed midi dress in a breathable linen blend. Easy to dress up or down for everyday wear.",
+      "A sleeveless tiered maxi dress with a flattering V-neck and flowing skirt. Available in multiple colours for everyday and occasion wear.",
     price: 449.99,
     sizes: clothingSizes,
-    colourKeys: ["black", "beige", "navy"],
+    colourKeys: ["black", "red", "beige", "pink", "blue", "green"],
     isNew: true,
     isFeatured: true,
     imageSeed: 0,
+    customImages: [placeholderImages.women],
   },
   {
     name: "Classic Crew Neck T-Shirt",

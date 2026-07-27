@@ -1,0 +1,25 @@
+# Render Blueprint — Helen Lifestyle
+# https://render.com/docs/blueprint-spec
+#
+# Deploy: connect this GitHub repo in Render, or use Blueprint from render.yaml
+
+services:
+  - type: web
+    name: helen-lifestyle
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "20.18.0"
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_SITE_URL
+        # After first deploy, set this to your Render URL, e.g.:
+        # https://helen-lifestyle.onrender.com
+        # Or your custom domain: https://helenlifestyle.co.za
+        sync: false

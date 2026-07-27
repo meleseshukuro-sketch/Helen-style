@@ -1,7 +1,9 @@
 import type { Announcement, StoreInfo } from "@/types";
 
 export const SITE_NAME = "Helen Lifestyle";
-export const SITE_URL = "https://helenlifestyle.co.za";
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://helenlifestyle.co.za";
 export const SITE_DESCRIPTION =
   "Fashion, home, beauty and everyday essentials under one roof. Shop Women, Men, Kids, Shoes, Bags, Beauty, Home Collection, Electronics and Accessories at Helen Lifestyle.";
 
