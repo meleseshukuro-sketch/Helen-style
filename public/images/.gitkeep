@@ -1,0 +1,9 @@
+# Central image placeholders
+# Replace these paths (and remote Unsplash URLs in src/data/categories.ts)
+# with your own brand photography when ready.
+
+# Recommended local structure once assets are available:
+# /public/images/hero.jpg
+# /public/images/departments/women.jpg
+# /public/images/departments/men.jpg
+# /public/images/products/...
